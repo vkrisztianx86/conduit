@@ -137,8 +137,8 @@ class Field_Identification(Basic_Page):
         time.sleep(3)
         fields = self.text_input()
         for field in fields:
-            field.send_keys('Ezegyadat')
-        self.texta_area().send_keys('Ezisadat')
+            field.send_keys('Ez isadat')
+        self.texta_area().send_keys('Ez isadat')
         time.sleep(3)
         self.publish_article_Btn().click()
         time.sleep(3)
