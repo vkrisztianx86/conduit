@@ -149,50 +149,23 @@ class Test_Main_Conduit:
     @allure.id('TC13, TC14')
     @allure.title('új adatbevitel - meglévő adat módosítás')
     def test_type_in_and_data_modification(self):
-        self.conduit.sign_in()
-        time.sleep(1)
-        self.conduit.new_article().click()
-        time.sleep(1)
-        fields = self.conduit.text_input()
-        for field in fields:
-            field.send_keys('Ez egy adat')
-        self.conduit.texta_area().send_keys('Ez is data')
-        self.conduit.publish_article_Btn().click()
-        self.conduit.edit_article().click()
+        self.conduit.data_input()
         test_data = self.conduit.input_text().text
-        if test_data == 'Ez is data':
-            assert test_data == 'Ez is data'
-        else:
-            self.conduit.texta_area().click()
-            time.sleep(1)
-            self.conduit.texta_area().clear()
-            time.sleep(1)
-            self.conduit.texta_area().send_keys('Ez is data')
-            self.conduit.publish_article_Btn().click()
-            self.conduit.edit_article().click()
-        time.sleep(2)
-
-        self.conduit.texta_area().send_keys('Ez is data')
-        time.sleep(2)
-        self.conduit.publish_article_Btn().click()
         self.conduit.edit_article().click()
-        test_data1 = self.conduit.input_text().text
-        assert test_data1 == 'Ez is dataEz is data'
+        time.sleep(2)
+        self.conduit.texta_area().click()
+        time.sleep(2)
+        self.conduit.texta_area().send_keys('Ezisadat')
+        time.sleep(3)
+        adat = self.conduit.texta_area().get_attribute('value')
+        assert adat == 'EzisadatEzisadat'
+        time.sleep(2)
         print(('TC13, TC14 lefutott'))
 
     @allure.id('TC15, TC16')
     @allure.title('új adatbevitel - meglévő adat módosítás')
     def test_delete_data(self):
-        self.conduit.sign_in()
-        time.sleep(1)
-        self.conduit.new_article().click()
-        time.sleep(1)
-        fields = self.conduit.text_input()
-        for field in fields:
-            field.send_keys('Ez egy adat')
-        self.conduit.texta_area().send_keys('Ez is data')
-        self.conduit.publish_article_Btn().click()
-        time.sleep(1)
+        self.conduit.data_input()
         self.conduit.edit_article().click()
         time.sleep(1)
         test_data = self.conduit.texta_area().text

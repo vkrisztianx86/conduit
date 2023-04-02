@@ -105,25 +105,44 @@ class Field_Identification(Basic_Page):
         return self.browser.find_elements(By.XPATH, '//input[@type="text"]')
 
     def publish_article_Btn(self):
-        return WebDriverWait(self.browser, 5).until(
-        EC.element_to_be_clickable((By.XPATH, '//button[@type="submit"]')))
+        return self.browser.find_element(By.XPATH, '//button[@type="submit"]')
 
     def texta_area(self):
         return self.browser.find_element(By.XPATH, '//textarea[@rows="8"]')
 
     def edit_article(self):
-        return WebDriverWait(self.browser, 5).until(
-        EC.element_to_be_clickable((By.XPATH, '//i[@class="ion-edit"]')))
+        return self.browser.find_element(By.XPATH, '//i[@class="ion-edit"]')
 
     def input_text(self):
         return self.browser.find_element(By.XPATH, '//div[@class="col-xs-12"]/div/p')
+
+    def annyoying_panel(self):
+        return self.browser.find_element(By.XPATH, '//i[@class="ion-plus-round"]')
+
+    def conduit_logo(self):
+        return self.browser.find_element(By.XPATH, '//a[@class="navbar-brand router-link-active"]')
 
     def sign_in(self):
         self.sign_in_Btn().click()
         time.sleep(1)
         self.email_input_signup().send_keys(test_list[1])
         self.password_input_signup().send_keys(test_list[2])
+        time.sleep(1)
         self.sign_up_Btn_green().click()
+
+    def data_input(self):
+        self.sign_in()
+        time.sleep(3)
+        self.new_article().click()
+        time.sleep(3)
+        fields = self.text_input()
+        for field in fields:
+            field.send_keys('Ezegyadat')
+        self.texta_area().send_keys('Ezisadat')
+        time.sleep(3)
+        self.publish_article_Btn().click()
+        time.sleep(3)
+
 
 
 
