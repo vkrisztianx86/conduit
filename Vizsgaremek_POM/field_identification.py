@@ -12,7 +12,7 @@ test_data1 = {
     "password": "passworD12"
 }
 test_data2 = {
-    "counter": "6",
+    "counter": "9",
     "username": "Tester11",
     "email": "Tester1@yahoo.hu",
     "password": "passworD12"
@@ -142,6 +142,8 @@ class Field_Identification(Basic_Page):
         time.sleep(3)
         self.publish_article_Btn().click()
         time.sleep(3)
+
+
 
 
 

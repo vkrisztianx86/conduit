@@ -183,8 +183,9 @@ class Test_Main_Conduit:
     def test_delete_data(self):
         self.conduit.data_input()
         if self.conduit.edit_article().is_displayed():
+            time.sleep(3)
             self.conduit.edit_article().click()
-            time.sleep(1)
+            time.sleep(2)
             test_data = self.conduit.texta_area().get_attribute('value')
             if test_data != '':
                 self.conduit.texta_area().click()
