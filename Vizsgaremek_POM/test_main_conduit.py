@@ -74,10 +74,9 @@ class Test_Main_Conduit:
         current_URL = self.conduit.current_URL()
         assert current_URL == 'http://localhost:1667/#/login'
         login_failed.click()
-        print('TC6 lefutott') \
- \
-        @ allure.id('TC7')
+        print('TC6 lefutott')
 
+    @allure.id('TC7')
     @allure.title('Bejelentkezés - sikeresen')
     def test_signin_succesfully(self):
         # self.test_signup_succesfully()
