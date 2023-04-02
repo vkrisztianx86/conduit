@@ -17,9 +17,4 @@ def get_preconfigured_chrome_driver() -> webdriver.Chrome:
     o.add_argument('--disable-dev-shm-usage')
     return webdriver.Chrome(service=s, options=o)
 
-# Csak példa a funkció használatára.
-# Más modulba importálva ez a rész nem fog lefutni.
-# if __name__ == '__main__':
-#     browser = get_preconfigured_chrome_driver()
-#     browser.get('https://www.google.com')
-#     browser.maximize_window()
+

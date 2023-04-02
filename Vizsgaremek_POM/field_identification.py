@@ -1,9 +1,10 @@
 from basic_page import Basic_Page
-
+import time
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
+
 
 test_data = {
     "username": "Krisztianx86",
@@ -11,10 +12,16 @@ test_data = {
     "password": "passworD12"
 }
 test_data2 = {
-    "username": "Tester1",
-    "email": "Tester1@yhoo.hu",
+    "counter": "6",
+    "username": "Tester11",
+    "email": "Tester1@yahoo.hu",
     "password": "passworD12"
 }
+username = test_data2["username"] + test_data2["counter"]
+email = test_data2["email"] + test_data2["counter"]
+password = test_data2["password"]
+
+test_list = [username, email, password]
 
 class Field_Identification(Basic_Page):
 
@@ -32,6 +39,7 @@ class Field_Identification(Basic_Page):
 
     def sign_up_Btn_green(self):
         return self.browser.find_element(By.XPATH, '//button[@class="btn btn-lg btn-primary pull-xs-right"]')
+
 
     def reg_failed(self):
         return self.browser.find_element(By.XPATH, '//button[@class="swal-button swal-button--confirm"]')
@@ -80,4 +88,44 @@ class Field_Identification(Basic_Page):
 
     def current_URL(self):
         return self.browser.current_url
+
+    def sign_up_inputs(self):
+        return self.browser.find_elements(By.XPATH, '//input[@class="form-control form-control-lg"]')
+
+    def profile_name(self):
+        return self.browser.find_element(By.XPATH, '//*[@id="app"]/nav/div/ul/li[4]/a')
+
+    def pages(self):
+        return self.browser.find_elements(By.CSS_SELECTOR, '.page-link')
+
+    def new_article(self):
+        return self.browser.find_element(By.XPATH, '//i[@class="ion-compose"]')
+
+    def text_input(self):
+        return self.browser.find_elements(By.XPATH, '//input[@type="text"]')
+
+    def publish_article_Btn(self):
+        return WebDriverWait(self.browser, 5).until(
+        EC.element_to_be_clickable((By.XPATH, '//button[@type="submit"]')))
+
+    def texta_area(self):
+        return self.browser.find_element(By.XPATH, '//textarea[@rows="8"]')
+
+    def edit_article(self):
+        return WebDriverWait(self.browser, 5).until(
+        EC.element_to_be_clickable((By.XPATH, '//i[@class="ion-edit"]')))
+
+    def input_text(self):
+        return self.browser.find_element(By.XPATH, '//div[@class="col-xs-12"]/div/p')
+
+    def sign_in(self):
+        self.sign_in_Btn().click()
+        time.sleep(1)
+        self.email_input_signup().send_keys(test_list[1])
+        self.password_input_signup().send_keys(test_list[2])
+        self.sign_up_Btn_green().click()
+
+
+
+
 
