@@ -6,7 +6,7 @@ from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
 
 
-test_data = {
+test_data1 = {
     "username": "Krisztianx86",
     "email": "vkrisztianx86@gmail.com",
     "password": "passworD12"
