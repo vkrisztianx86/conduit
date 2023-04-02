@@ -150,37 +150,86 @@ class Test_Main_Conduit:
     @allure.title('új adatbevitel - meglévő adat módosítás')
     def test_type_in_and_data_modification(self):
         self.conduit.data_input()
-        test_data = self.conduit.input_text().text
-        self.conduit.edit_article().click()
-        time.sleep(2)
-        self.conduit.texta_area().click()
-        time.sleep(2)
-        self.conduit.texta_area().send_keys('Ezisadat')
-        time.sleep(3)
-        adat = self.conduit.texta_area().get_attribute('value')
-        assert adat == 'EzisadatEzisadat'
-        time.sleep(2)
-        print(('TC13, TC14 lefutott'))
+        if self.conduit.edit_article().is_displayed():
+            self.conduit.edit_article().click()
+            time.sleep(2)
+            self.conduit.texta_area().click()
+            time.sleep(2)
+            self.conduit.texta_area().send_keys('Ez isadat')
+            time.sleep(3)
+            adat = self.conduit.texta_area().get_attribute('value')
+            assert adat == 'Ez isadatEz isadat'
+            time.sleep(2)
+            print(('TC13, TC14 lefutott'))
+        else:
+            self.conduit.conduit_logo().click()
+            time.sleep(2)
+            self.conduit.new_article().click()
+            time.sleep(3)
+            fields = self.conduit.text_input()
+            for field in fields:
+                field.send_keys('Ezisadat')
+            self.conduit.texta_area().send_keys('Ezisadat')
+            time.sleep(3)
+            self.conduit.texta_area().send_keys('Ezisadat')
+            time.sleep(1)
+            adat = self.conduit.texta_area().get_attribute('value')
+            assert adat == 'EzisadatEzisadat'
+            time.sleep(2)
+            print(('TC13, TC14 lefutott'))
 
     @allure.id('TC15, TC16')
     @allure.title('új adatbevitel - meglévő adat módosítás')
     def test_delete_data(self):
         self.conduit.data_input()
-        self.conduit.edit_article().click()
-        time.sleep(1)
-        test_data = self.conduit.texta_area().text
-        if test_data != '':
-            self.conduit.texta_area().click()
-            time.sleep(2)
-            self.conduit.texta_area().clear()
-            time.sleep(2)
-            assert test_data == ''
-            print('Yes, if')
+        if self.conduit.edit_article().is_displayed():
+            self.conduit.edit_article().click()
+            time.sleep(1)
+            test_data = self.conduit.texta_area().get_attribute('value')
+            if test_data != '':
+                self.conduit.texta_area().click()
+                time.sleep(2)
+                self.conduit.texta_area().clear()
+                time.sleep(2)
+                test_data1 = self.conduit.texta_area().get_attribute('value')
+                time.sleep(1)
+                assert test_data1 == ''
+                print('Yes, if')
+            else:
+                test_data1 = self.conduit.texta_area().get_attribute('value')
+                assert test_data1 == ''
+                print('Yes, else')
+                print('T' + test_data + 'T')
+                print(('TC15, TC16 lefutott'))
         else:
-            assert test_data == ''
-            print('Yes, else')
-            print('T' + test_data + 'T')
-        print(('TC15, TC16 lefutott'))
+            self.conduit.conduit_logo().click()
+            time.sleep(2)
+            self.conduit.new_article().click()
+            time.sleep(3)
+            fields = self.conduit.text_input()
+            for field in fields:
+                field.send_keys('Ezisadat')
+            self.conduit.texta_area().send_keys('Ezisadat')
+            time.sleep(3)
+            self.conduit.publish_article_Btn().click()
+            time.sleep(3)
+            test_data = self.conduit.texta_area().get_attribute('value')
+            time.sleep(1)
+            if test_data != '':
+                self.conduit.texta_area().click()
+                time.sleep(2)
+                self.conduit.texta_area().clear()
+                time.sleep(2)
+                test_data1 = self.conduit.texta_area().get_attribute('value')
+                time.sleep(1)
+                assert test_data1 == ''
+                print('Yes, if')
+            else:
+                test_data1 = self.conduit.texta_area().get_attribute('value')
+                assert test_data1 == ''
+                print('Yes, else')
+                print('T' + test_data + 'T')
+                print(('TC15, TC16 lefutott'))
 
 
 
