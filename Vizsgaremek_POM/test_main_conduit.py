@@ -109,14 +109,14 @@ class Test_Main_Conduit:
         self.conduit.sign_in()
         time.sleep(2)
         article = self.conduit.article()
-        article[0].click()
+        article[-1].click()
         time.sleep(1)
         self.conduit.comment_input().click()
         time.sleep(1)
         self.conduit.comment_input().clear()
         self.conduit.comment_input().send_keys('Bandita')
         self.conduit.post_comment().click()
-        card_text = self.conduit.card_text()
+        card_text = self.conduit.card_text()[-1]
         assert card_text.text == 'Bandita'
         print('TC10 lefutott')
 

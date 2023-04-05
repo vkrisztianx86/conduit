@@ -64,7 +64,7 @@ class Field_Identification(Basic_Page):
         return self.browser.find_element(By.XPATH, '//i[@class="ion-android-exit"]')
 
     def article(self):
-        return self.browser.find_elements(By.CLASS_NAME, 'article-preview')
+        return self.browser.find_elements(By.XPATH, '//*[@id="app"]/div/div[2]/div/div[1]/div[2]/div/div/div[1]/a/h1')
 
     def comment_input(self):
         return WebDriverWait(self.browser, 5).until(
@@ -74,7 +74,7 @@ class Field_Identification(Basic_Page):
         return self.browser.find_element(By.XPATH, '//button[@class="btn btn-sm btn-primary"]')
 
     def card_text(self):
-        return self.browser.find_elements(By.XPATH, '//p[@class="card-text"]')[-1]
+        return self.browser.find_elements(By.XPATH, '//p[@class="card-text"]')
 
     def delete(self):
         return WebDriverWait(self.browser, 5).until(
