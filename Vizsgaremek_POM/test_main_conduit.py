@@ -110,12 +110,14 @@ class Test_Main_Conduit:
         time.sleep(2)
         article = self.conduit.article()
         article[-1].click()
-        time.sleep(1)
+        time.sleep(2)
         self.conduit.comment_input().click()
-        time.sleep(1)
+        time.sleep(2)
         self.conduit.comment_input().clear()
         self.conduit.comment_input().send_keys('Bandita')
+        time.sleep(2)
         self.conduit.post_comment().click()
+        time.sleep(2)
         card_text = self.conduit.card_text()[-1]
         assert card_text.text == 'Bandita'
         print('TC10 lefutott')
