@@ -143,6 +143,8 @@ class Field_Identification(Basic_Page):
         self.publish_article_Btn().click()
         time.sleep(3)
 
+    def text_to_read(self):
+        return self.browser.find_element(By.XPATH, '//div[@class="col-xs-12"]/div/p')
 
 
 

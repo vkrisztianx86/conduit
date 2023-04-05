@@ -128,7 +128,7 @@ class Test_Main_Conduit:
         self.conduit.sign_in()
         time.sleep(2)
         article = self.conduit.article()
-        article[0].click()
+        article[-1].click()
         time.sleep(1)
         comment_input = self.conduit.comment_input()
         self.conduit.post_comment().click()
@@ -233,6 +233,44 @@ class Test_Main_Conduit:
                 print('Yes, else')
                 print('T' + test_data + 'T')
                 print(('TC15, TC16 lefutott'))
+
+    @allure.id('TC17')
+    @allure.title('Adatok lementése felületről')
+    def test_read_from_conduit(self):
+        self.conduit.sign_in()
+        time.sleep(2)
+        article = self.conduit.article()
+        article[-1].click()
+        time.sleep(2)
+        data = self.conduit.text_to_read().text
+        time.sleep(1)
+        with open('Data.txt', 'w', encoding='UTF-8') as file_to_write:
+            file_to_write.write(str(data))
+        time.sleep(2)
+        with open('Data.txt', 'r', encoding='UTF-8') as file_to_read:
+            content = file_to_read.read()
+            print(content)
+
+    @allure.id('TC18')
+    @allure.title('Adatok listázása')
+    def test_listing_data_frpm_conduit(self):
+        self.conduit.sign_in()
+        time.sleep(2)
+        article = self.conduit.article()
+        article[-1].click()
+        time.sleep(2)
+        data = self.conduit.text_to_read().text
+        time.sleep(1)
+        with open('Data.txt', 'w', encoding='UTF-8') as file_to_write:
+            file_to_write.write(str(data))
+        time.sleep(2)
+        with open('Data.txt', 'r', encoding='UTF-8') as file_to_read:
+            content = file_to_read.read()
+            print(content)
+            content1 = content.split()
+            print(content1[1::3])
+            assert content == data
+
 
 
 
