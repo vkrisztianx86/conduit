@@ -94,17 +94,18 @@ class Test_Main_Conduit:
         time.sleep(6)
         self.conduit.logout_Btn2().click()
         time.sleep(2)
-        self.conduit.sign_in_Btn().click()
-        time.sleep(6)
+        # self.conduit.sign_in_Btn().click()
+        # time.sleep(6)
         # self.conduit.email_input_signup().send_keys(test_list[1])
         # self.conduit.password_input_signup().send_keys(test_list[2])
-        signup_inputs = self.conduit.sign_up_inputs()
-        counter = 1
-        for input in signup_inputs:
-            input.send_keys(test_list[counter])
-            counter += 1
-        time.sleep(8)
-        self.conduit.sign_up_Btn_green().click()
+        # signup_inputs = self.conduit.sign_up_inputs()
+        # counter = 1
+        # for input in signup_inputs:
+        #     input.send_keys(test_list[counter])
+        #     counter += 1
+        # time.sleep(8)
+        # self.conduit.sign_up_Btn_green().click()
+        self.conduit.sign_in()
         time.sleep(8)
         profile_name = self.conduit.profile_name()
         assert profile_name.text == test_list[0]
