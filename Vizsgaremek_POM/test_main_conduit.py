@@ -96,8 +96,13 @@ class Test_Main_Conduit:
         time.sleep(2)
         self.conduit.sign_in_Btn().click()
         time.sleep(6)
-        self.conduit.email_input_signup().send_keys(test_list[1])
-        self.conduit.password_input_signup().send_keys(test_list[2])
+        # self.conduit.email_input_signup().send_keys(test_list[1])
+        # self.conduit.password_input_signup().send_keys(test_list[2])
+        signup_inputs = self.conduit.sign_up_inputs()
+        counter = 1
+        for input in signup_inputs:
+            input.send_keys(test_list[counter])
+            counter += 1
         self.conduit.sign_up_Btn_green().click()
         time.sleep(2)
         profile_name = self.conduit.profile_name()
