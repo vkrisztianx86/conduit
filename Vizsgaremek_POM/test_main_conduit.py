@@ -95,7 +95,7 @@ class Test_Main_Conduit:
         self.conduit.logout_Btn2().click()
         time.sleep(2)
         self.conduit.sign_in_Btn().click()
-        time.sleep(4)
+        time.sleep(6)
         self.conduit.email_input_signup().send_keys(test_list[1])
         self.conduit.password_input_signup().send_keys(test_list[2])
         self.conduit.sign_up_Btn_green().click()
