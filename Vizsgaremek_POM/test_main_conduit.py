@@ -232,3 +232,4 @@ class Test_Main_Conduit:
             print(content1[1::3])
             assert content == data
         print('TC16 lefutott')
+
