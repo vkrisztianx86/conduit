@@ -104,7 +104,7 @@ class Test_Main_Conduit:
             input.send_keys(test_list[counter])
             counter += 1
         time.sleep(3)
-        self.conduit.sign_up_Btn_green().click()
+        self.conduit.sign_up_Btn_green_1().click()
         time.sleep(2)
         profile_name = self.conduit.profile_name()
         assert profile_name.text == test_list[0]

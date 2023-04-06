@@ -49,6 +49,9 @@ class Field_Identification(Basic_Page):
     def sign_up_Btn_green(self):
         return self.browser.find_element(By.XPATH, '//button[@class="btn btn-lg btn-primary pull-xs-right"]')
 
+    def sign_up_Btn_green_1(self):
+        return self.browser.find_element(By.XPATH, '/html/body/div[1]/div/div/div/div/form/button')
+
     def reg_failed(self):
         return self.browser.find_element(By.XPATH, '//button[@class="swal-button swal-button--confirm"]')
 
