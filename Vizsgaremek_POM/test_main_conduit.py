@@ -114,11 +114,13 @@ class Test_Main_Conduit:
         self.conduit.comment_input().click()
         time.sleep(2)
         self.conduit.comment_input().clear()
+        time.sleep(1)
         self.conduit.comment_input().send_keys('Bandita')
         time.sleep(2)
         self.conduit.post_comment().click()
         time.sleep(2)
         card_text = self.conduit.card_text()[-1]
+        time.sleep(1)
         assert card_text.text == 'Bandita'
         print('TC10 lefutott')
 
@@ -144,97 +146,54 @@ class Test_Main_Conduit:
         pages = self.conduit.pages()
         for page in pages:
             page.click()
-            time.sleep(2)
+            time.sleep(1)
             print(page.text, end=';')
         print('TC12 lefutott')
 
-    @allure.id('TC13, TC14')
-    @allure.title('meglévő adat módosítás')
-    def test_type_in_and_data_modification(self):
-        self.conduit.data_input()
-        if self.conduit.edit_article().is_displayed():
-            self.conduit.edit_article().click()
-            time.sleep(2)
-            self.conduit.texta_area().click()
-            time.sleep(2)
-            self.conduit.texta_area().send_keys('Ez isadat')
-            time.sleep(3)
-            adat = self.conduit.texta_area().get_attribute('value')
-            assert adat == 'Ez isadatEz isadat'
-            time.sleep(2)
-            print(('TC13, TC14 lefutott'))
-        else:
-            self.conduit.conduit_logo().click()
-            time.sleep(2)
-            self.conduit.new_article().click()
-            time.sleep(3)
-            fields = self.conduit.text_input()
-            for field in fields:
-                field.send_keys('Ezisadat')
-            self.conduit.texta_area().send_keys('Ezisadat')
-            time.sleep(3)
-            self.conduit.texta_area().send_keys('Ezisadat')
-            time.sleep(1)
-            adat = self.conduit.texta_area().get_attribute('value')
-            assert adat == 'EzisadatEzisadat'
-            time.sleep(2)
-            print(('TC13, TC14 lefutott'))
+    @allure.id('TC13')
+    @allure.title('meglévő adat módosítása')
+    def test_data_modification(self):
+        self.conduit.sign_in()
+        self.conduit.settings_Btn().click()
+        time.sleep(1)
+        current_username = self.conduit.username_input().get_attribute('value')
+        current_username_mod = current_username[0:-1]
+        self.conduit.username_input().clear()
+        self.conduit.username_input().send_keys(current_username_mod + 'mod')
+        current_username_mod = current_username_mod + 'mod'
+        self.conduit.update_Btn().click()
+        time.sleep(2)
+        assert self.conduit.update_successful_modal().is_displayed()
+        time.sleep(2)
+        self.conduit.update_successful_modal_ok_Btn().click()
+        time.sleep(2)
+        current_username = self.conduit.username_input().get_attribute('value')
+        assert current_username_mod == current_username
+        print(('TC13 lefutott'))
 
-    @allure.id('TC15, TC16')
+    @allure.id('TC14')
     @allure.title('meglévő adat törlése')
     def test_delete_data(self):
-        self.conduit.data_input()
-        if self.conduit.edit_article().is_displayed():
-            time.sleep(3)
-            self.conduit.edit_article().click()
-            time.sleep(2)
-            test_data = self.conduit.texta_area().get_attribute('value')
-            if test_data != '':
-                self.conduit.texta_area().click()
-                time.sleep(2)
-                self.conduit.texta_area().clear()
-                time.sleep(2)
-                test_data1 = self.conduit.texta_area().get_attribute('value')
-                time.sleep(1)
-                assert test_data1 == ''
-                print('Yes, if')
-            else:
-                test_data1 = self.conduit.texta_area().get_attribute('value')
-                assert test_data1 == ''
-                print('Yes, else')
-                print('T' + test_data + 'T')
-                print(('TC15, TC16 lefutott'))
-        else:
-            self.conduit.conduit_logo().click()
-            time.sleep(2)
-            self.conduit.new_article().click()
-            time.sleep(3)
-            fields = self.conduit.text_input()
-            for field in fields:
-                field.send_keys('Ezisadat')
-            self.conduit.texta_area().send_keys('Ezisadat')
-            time.sleep(3)
-            self.conduit.publish_article_Btn().click()
-            time.sleep(3)
-            test_data = self.conduit.texta_area().get_attribute('value')
-            time.sleep(1)
-            if test_data != '':
-                self.conduit.texta_area().click()
-                time.sleep(2)
-                self.conduit.texta_area().clear()
-                time.sleep(2)
-                test_data1 = self.conduit.texta_area().get_attribute('value')
-                time.sleep(1)
-                assert test_data1 == ''
-                print('Yes, if')
-            else:
-                test_data1 = self.conduit.texta_area().get_attribute('value')
-                assert test_data1 == ''
-                print('Yes, else')
-                print('T' + test_data + 'T')
-                print(('TC15, TC16 lefutott'))
+        self.conduit.sign_in()
+        article = self.conduit.article()
+        article[0].click()
+        time.sleep(2)
+        self.conduit.comment_input().click()
+        time.sleep(2)
+        self.conduit.comment_input().clear()
+        self.conduit.comment_input().send_keys('ThisisData')
+        time.sleep(2)
+        self.conduit.post_comment().click()
+        time.sleep(2)
+        card_text = self.conduit.card_text()[0]
+        assert card_text.text == 'ThisisData'
+        self.conduit.delete().click()
+        time.sleep(1)
+        card_text = self.conduit.card_text()[0]
+        assert card_text.text != 'ThisisData'
+        print('TC14 lefutott')
 
-    @allure.id('TC17')
+    @allure.id('TC15')
     @allure.title('Adatok lementése felületről')
     def test_read_from_conduit(self):
         self.conduit.sign_in()
@@ -251,8 +210,9 @@ class Test_Main_Conduit:
             content = file_to_read.read()
             print(content)
             assert data == content
+        print('TC15 lefutott')
 
-    @allure.id('TC18')
+    @allure.id('TC16')
     @allure.title('Adatok listázása')
     def test_listing_data_frpm_conduit(self):
         self.conduit.sign_in()
@@ -271,8 +231,4 @@ class Test_Main_Conduit:
             content1 = content.split()
             print(content1[1::3])
             assert content == data
-
-
-
-
-
+        print('TC16 lefutott')

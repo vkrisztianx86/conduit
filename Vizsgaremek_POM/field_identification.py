@@ -5,14 +5,13 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
 
-
 test_data1 = {
     "username": "Krisztianx86",
     "email": "vkrisztianx86@gmail.com",
     "password": "passworD12"
 }
 test_data2 = {
-    "counter": "9",
+    "counter": "12",
     "username": "Tester11",
     "email": "Tester1@yahoo.hu",
     "password": "passworD12"
@@ -22,6 +21,7 @@ email = test_data2["email"] + test_data2["counter"]
 password = test_data2["password"]
 
 test_list = [username, email, password]
+
 
 class Field_Identification(Basic_Page):
 
@@ -39,7 +39,6 @@ class Field_Identification(Basic_Page):
 
     def sign_up_Btn_green(self):
         return self.browser.find_element(By.XPATH, '//button[@class="btn btn-lg btn-primary pull-xs-right"]')
-
 
     def reg_failed(self):
         return self.browser.find_element(By.XPATH, '//button[@class="swal-button swal-button--confirm"]')
@@ -68,7 +67,7 @@ class Field_Identification(Basic_Page):
 
     def comment_input(self):
         return WebDriverWait(self.browser, 5).until(
-        EC.element_to_be_clickable((By.XPATH, '//textarea[@placeholder="Write a comment..."]')))
+            EC.element_to_be_clickable((By.XPATH, '//textarea[@placeholder="Write a comment..."]')))
 
     def post_comment(self):
         return self.browser.find_element(By.XPATH, '//button[@class="btn btn-sm btn-primary"]')
@@ -78,10 +77,11 @@ class Field_Identification(Basic_Page):
 
     def delete(self):
         return WebDriverWait(self.browser, 5).until(
-        EC.element_to_be_clickable((By.XPATH, '//i[@class="ion-trash-a"]')))
+            EC.element_to_be_clickable((By.XPATH, '//i[@class="ion-trash-a"]')))
 
     def cookie_Btn(self):
-        return self.browser.find_element(By.XPATH, '//button[@class="cookie__bar__buttons__button cookie__bar__buttons__button--accept"]')
+        return self.browser.find_element(By.XPATH,
+                                         '//button[@class="cookie__bar__buttons__button cookie__bar__buttons__button--accept"]')
 
     def cookie_bar_content(self):
         return self.browser.find_element(By.CSS_SELECTOR, '.cookie__bar__content')
@@ -122,6 +122,21 @@ class Field_Identification(Basic_Page):
     def conduit_logo(self):
         return self.browser.find_element(By.XPATH, '//a[@class="navbar-brand router-link-active"]')
 
+    def settings_Btn(self):
+        return self.browser.find_element(By.XPATH, '//*[@id="app"]/nav/div/ul/li[3]/a')
+
+    def username_input(self):
+        return self.browser.find_element(By.XPATH, '//input[@placeholder="Your username"]')
+
+    def update_Btn(self):
+        return self.browser.find_element(By.XPATH, '//button[@class="btn btn-lg btn-primary pull-xs-right"]')
+
+    def update_successful_modal(self):
+        return self.browser.find_element(By.XPATH, '//div[@class="swal-title"]')
+
+    def update_successful_modal_ok_Btn(self):
+        return self.browser.find_element(By.XPATH, '//button[@class="swal-button swal-button--confirm"]')
+
     def sign_in(self):
         self.sign_in_Btn().click()
         time.sleep(1)
@@ -129,26 +144,7 @@ class Field_Identification(Basic_Page):
         self.password_input_signup().send_keys(test_list[2])
         time.sleep(1)
         self.sign_up_Btn_green().click()
-
-    def data_input(self):
-        self.sign_in()
-        time.sleep(3)
-        self.new_article().click()
-        time.sleep(3)
-        fields = self.text_input()
-        for field in fields:
-            field.send_keys('Ez isadat')
-        self.texta_area().send_keys('Ez isadat')
-        time.sleep(3)
-        self.publish_article_Btn().click()
-        time.sleep(3)
+        time.sleep(2)
 
     def text_to_read(self):
         return self.browser.find_element(By.XPATH, '//div[@class="col-xs-12"]/div/p')
-
-
-
-
-
-
-
