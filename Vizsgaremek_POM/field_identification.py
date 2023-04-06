@@ -66,7 +66,7 @@ class Field_Identification(Basic_Page):
             EC.presence_of_element_located((By.XPATH, '//button[@class="swal-button swal-button--confirm"]')))
 
     def logout_Btn(self):
-        return self.browser.find_element(By.XPATH, '//a[@active-class="active"]')
+        return self.browser.find_element(By.XPATH, '//*[@id="app"]/nav/div/ul/li[5]/a')
 
     def logout_Btn_1(self):
         return self.browser.find_element(By.XPATH, '//i[@class="ion-android-exit"]')
