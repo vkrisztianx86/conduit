@@ -72,8 +72,7 @@ class Test_Main_Conduit:
         assert reg_modal.is_displayed()
         self.conduit.registration_successful_modal().click()
         time.sleep(4)
-        logout = self.conduit.logout_Btn()
-        logout.click()
+        self.conduit.logout_Btn().click()
 
         print('TC3 lefutott')
 
