@@ -22,6 +22,7 @@ class Test_Main_Conduit:
     def test_accept_cookie(self):
         cookie_bar_content = self.conduit.cookie_bar_content()
         cookie_Btn = self.conduit.cookie_Btn()
+        time.sleep(2)
         assert cookie_bar_content.is_displayed()
         try:
             cookie_Btn.click()
@@ -33,7 +34,7 @@ class Test_Main_Conduit:
     @allure.title('Regisztráció - üres mezőkkel')
     def test_signup_with_empty_fields(self):
         self.conduit.sign_up_Btn().click()
-        time.sleep(1)
+        time.sleep(2)
         current_URL = self.conduit.current_URL()
         assert current_URL == 'http://localhost:1667/#/register'
         self.conduit.sign_up_Btn_green().click()
