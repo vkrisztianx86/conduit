@@ -149,7 +149,7 @@ class Test_Main_Conduit:
         print('TC12 lefutott')
 
     @allure.id('TC13, TC14')
-    @allure.title('új adatbevitel - meglévő adat módosítás')
+    @allure.title('meglévő adat módosítás')
     def test_type_in_and_data_modification(self):
         self.conduit.data_input()
         if self.conduit.edit_article().is_displayed():
@@ -181,7 +181,7 @@ class Test_Main_Conduit:
             print(('TC13, TC14 lefutott'))
 
     @allure.id('TC15, TC16')
-    @allure.title('új adatbevitel - meglévő adat módosítás')
+    @allure.title('meglévő adat törlése')
     def test_delete_data(self):
         self.conduit.data_input()
         if self.conduit.edit_article().is_displayed():
@@ -250,6 +250,7 @@ class Test_Main_Conduit:
         with open('Data.txt', 'r', encoding='UTF-8') as file_to_read:
             content = file_to_read.read()
             print(content)
+            assert data == content
 
     @allure.id('TC18')
     @allure.title('Adatok listázása')
