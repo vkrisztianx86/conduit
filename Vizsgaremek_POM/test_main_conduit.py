@@ -92,7 +92,7 @@ class Test_Main_Conduit:
     def test_signin_succesfully(self):
         self.test_signup_succesfully_and_data_input_iteration()
         time.sleep(2)
-        self.conduit.logout_Btn().click()
+        self.conduit.logout_Btn_1().click()
         time.sleep(2)
         self.conduit.sign_in_Btn().click()
         time.sleep(2)
