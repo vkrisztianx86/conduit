@@ -103,9 +103,9 @@ class Test_Main_Conduit:
         for input in signup_inputs:
             input.send_keys(test_list[counter])
             counter += 1
-        time.sleep(6)
-        self.conduit.sign_up_Btn_green_1().click()
-        time.sleep(6)
+        time.sleep(8)
+        self.conduit.sign_up_Btn_green().click()
+        time.sleep(8)
         profile_name = self.conduit.profile_name()
         assert profile_name.text == test_list[0]
         print('TC5 lefutott')
