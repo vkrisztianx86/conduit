@@ -69,7 +69,7 @@ class Field_Identification(Basic_Page):
         return self.browser.find_elements(By.XPATH, '//a[@active-class="active"]')
 
     def logout_Btn_1(self):
-        return self.browser.find_element(By.XPATH, '//i[@class="ion-android-exit"]')
+        return self.browser.find_element(By.XPATH, '//*[@id="app"]/nav/div/ul/li[5]/a/i')
 
     def logout_Btn2(self):
         return self.browser.find_elements(By.XPATH, '//li[@class="nav-item"]')
