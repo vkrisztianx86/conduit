@@ -71,6 +71,7 @@ class Test_Main_Conduit:
         reg_modal = self.conduit.registration_successful_modal()
         assert reg_modal.is_displayed()
         self.conduit.registration_successful_modal().click()
+        time.sleep(1)
         print('TC3 lefutott')
 
     @allure.id('TC4')
@@ -90,11 +91,11 @@ class Test_Main_Conduit:
     @allure.title('Bejelentkezés - sikeresen')
     def test_signin_succesfully(self):
         self.test_signup_succesfully_and_data_input_iteration()
-        time.sleep(1)
+        time.sleep(2)
         self.conduit.logout_Btn().click()
-        time.sleep(1)
+        time.sleep(2)
         self.conduit.sign_in_Btn().click()
-        time.sleep(1)
+        time.sleep(2)
         self.conduit.email_input_signup().send_keys(test_list[1])
         self.conduit.password_input_signup().send_keys(test_list[2])
         self.conduit.sign_up_Btn_green().click()
