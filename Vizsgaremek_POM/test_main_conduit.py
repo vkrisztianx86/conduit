@@ -17,7 +17,7 @@ class Test_Main_Conduit:
     def teardown_method(self):
         self.conduit.close()
 
-    @allure.id('TC1, TC2')
+    @allure.id('TC1')
     @allure.title('Sütik elfogadása')
     def test_accept_cookie(self):
         cookie_bar_content = self.conduit.cookie_bar_content()
@@ -28,9 +28,9 @@ class Test_Main_Conduit:
             cookie_Btn.click()
         except BaseException as E:
             print(f'Cookie window is not showing up, error is {E}')
-        print('TC1,TC2 lefutott')
+        print('TC1 lefutott')
 
-    @allure.id('TC3')
+    @allure.id('TC2')
     @allure.title('Regisztráció - üres mezőkkel')
     def test_signup_with_empty_fields(self):
         self.conduit.sign_up_Btn().click()
@@ -42,9 +42,9 @@ class Test_Main_Conduit:
         reg_failed = self.conduit.reg_failed()
         assert reg_failed.is_displayed()
         reg_failed.click()
-        print('TC3 lefutott')
+        print('TC2 lefutott')
 
-    @allure.id('TC4, TC5')
+    @allure.id('TC3')
     @allure.title('Regisztráció - sikeresen + sorozatos adatbevitel listából')
     def test_signup_succesfully_and_data_input_iteration(self):
         self.conduit.sign_up_Btn().click()
@@ -62,9 +62,9 @@ class Test_Main_Conduit:
         reg_modal = self.conduit.registration_successful_modal()
         assert reg_modal.is_displayed()
         self.conduit.registration_successful_modal().click()
-        print('TC4, TC5 lefutott')
+        print('TC3 lefutott')
 
-    @allure.id('TC6')
+    @allure.id('TC4')
     @allure.title('Bejelentkezés - üres mezőkkel')
     def test_signin_with_empty_fields(self):
         self.conduit.sign_in_Btn().click()
@@ -75,9 +75,9 @@ class Test_Main_Conduit:
         current_URL = self.conduit.current_URL()
         assert current_URL == 'http://localhost:1667/#/login'
         login_failed.click()
-        print('TC6 lefutott')
+        print('TC4 lefutott')
 
-    @allure.id('TC7')
+    @allure.id('TC5')
     @allure.title('Bejelentkezés - sikeresen')
     def test_signin_succesfully(self):
         # self.test_signup_succesfully()
@@ -89,9 +89,9 @@ class Test_Main_Conduit:
         time.sleep(2)
         profile_name = self.conduit.profile_name()
         assert profile_name.text == test_list[0]
-        print('TC7 lefutott')
+        print('TC5 lefutott')
 
-    @allure.id('TC8, TC9')
+    @allure.id('TC6')
     @allure.title('Kijelentkezés - sikeres/sikertelen')
     def test_logout_succesfully_or_unsuccesfully(self):
         self.conduit.sign_in()
@@ -102,9 +102,9 @@ class Test_Main_Conduit:
             logout_Btn.click()
         except BaseException as E:
             print(f'There is no logout button, error is {E}')
-        print('TC8, TC9 lefutott')
+        print('TC6 lefutott')
 
-    @allure.id('TC10')
+    @allure.id('TC7')
     @allure.title('új adatbevitel - kommentként')
     def test_type_in_new_data_as_comment(self):
         self.conduit.sign_in()
@@ -123,9 +123,9 @@ class Test_Main_Conduit:
         card_text = self.conduit.card_text()[-1]
         time.sleep(1)
         assert card_text.text == 'Bandita'
-        print('TC10 lefutott')
+        print('TC7 lefutott')
 
-    @allure.id('TC11')
+    @allure.id('TC8')
     @allure.title('új adatbevitel - karakterbevitel nélkül')
     def test_type_in_without_data(self):
         self.conduit.sign_in()
@@ -137,9 +137,9 @@ class Test_Main_Conduit:
         self.conduit.post_comment().click()
         time.sleep(1)
         assert len(comment_input.text) == 0
-        print('TC11 lefutott')
+        print('TC8 lefutott')
 
-    @allure.id('TC12')
+    @allure.id('TC9')
     @allure.title('több oldalas lista bejárása')
     def test_iterating_thru_pages(self):
         self.conduit.sign_in()
@@ -149,9 +149,9 @@ class Test_Main_Conduit:
             page.click()
             time.sleep(1)
             print(page.text, end=';')
-        print('TC12 lefutott')
+        print('TC9 lefutott')
 
-    @allure.id('TC13')
+    @allure.id('TC10')
     @allure.title('meglévő adat módosítása')
     def test_data_modification(self):
         self.conduit.sign_in()
@@ -170,9 +170,9 @@ class Test_Main_Conduit:
         time.sleep(2)
         current_username = self.conduit.username_input().get_attribute('value')
         assert current_username_mod == current_username
-        print(('TC13 lefutott'))
+        print(('TC10 lefutott'))
 
-    @allure.id('TC14')
+    @allure.id('TC11')
     @allure.title('meglévő adat törlése')
     def test_delete_data(self):
         self.conduit.sign_in()
@@ -192,9 +192,9 @@ class Test_Main_Conduit:
         time.sleep(1)
         card_text = self.conduit.card_text()[0]
         assert card_text.text != 'ThisisData'
-        print('TC14 lefutott')
+        print('TC11 lefutott')
 
-    @allure.id('TC15')
+    @allure.id('TC12')
     @allure.title('Adatok lementése felületről')
     def test_read_from_conduit(self):
         self.conduit.sign_in()
@@ -211,9 +211,9 @@ class Test_Main_Conduit:
             content = file_to_read.read()
             print(content)
             assert data == content
-        print('TC15 lefutott')
+        print('TC12 lefutott')
 
-    @allure.id('TC16')
+    @allure.id('TC13')
     @allure.title('Adatok listázása')
     def test_listing_data_frpm_conduit(self):
         self.conduit.sign_in()
@@ -232,5 +232,5 @@ class Test_Main_Conduit:
             content1 = content.split()
             print(content1[1::3])
             assert content == data
-        print('TC16 lefutott')
+        print('TC13 lefutott')
 
