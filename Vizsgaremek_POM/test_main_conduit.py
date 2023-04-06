@@ -8,12 +8,21 @@ from field_identification import Field_Identification
 from field_identification import test_list
 
 
+# Ez a main class, ebben vannak definiálva a különböző tesztesetek végrehajtásához a függvények. A
+# "Test_Main_conduit" osztály GitHub-ra pusholásával elindul a Conduit weboldal automatizált tesztelése,
+# minden egyes teszteset teljesen különálló, a docker indítja az alkalmazást, majd a futás végén bezárja,
+# így mindegyik tesztesetet nulláról kell felépíteni.
+# ------------------------------------------------------------------------------------------------------------------
 class Test_Main_Conduit:
 
+    # ChromeDriver indítása, weboldal megnyitása
+    # ------------------------------------------------------------------------------------------------------------------
     def setup_method(self):
         self.conduit = Field_Identification(browser=config.get_preconfigured_chrome_driver())
         self.conduit.open()
 
+    # Chromedriver bezárása
+    # ------------------------------------------------------------------------------------------------------------------
     def teardown_method(self):
         self.conduit.close()
 
@@ -92,13 +101,13 @@ class Test_Main_Conduit:
         print('TC5 lefutott')
 
     @allure.id('TC6')
-    @allure.title('Kijelentkezés - sikeres/sikertelen')
+    @allure.title('Kijelentkezés')
     def test_logout_succesfully_or_unsuccesfully(self):
         self.conduit.sign_in()
-        time.sleep(1)
-        logout_Btn = self.conduit.logout_Btn()
-        assert logout_Btn.is_displayed()
+        time.sleep(2)
         try:
+            logout_Btn = self.conduit.logout_Btn()
+            assert logout_Btn.is_displayed()
             logout_Btn.click()
         except BaseException as E:
             print(f'There is no logout button, error is {E}')
@@ -233,4 +242,3 @@ class Test_Main_Conduit:
             print(content1[1::3])
             assert content == data
         print('TC13 lefutott')
-

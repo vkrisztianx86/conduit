@@ -5,6 +5,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
 
+# Tesztadatok dictionary-ba szervezése
+# ------------------------------------------------------------------------------------------------------------------
 test_data1 = {
     "username": "Krisztianx86",
     "email": "vkrisztianx86@gmail.com",
@@ -16,6 +18,9 @@ test_data2 = {
     "email": "Tester1@yahoo.hu",
     "password": "passworD12"
 }
+
+# Regisztrációs adatok összeállítása dictionary-ból és változókba mentése
+# ------------------------------------------------------------------------------------------------------------------
 username = test_data2["username"] + test_data2["counter"]
 email = test_data2["email"] + test_data2["counter"]
 password = test_data2["password"]
@@ -23,6 +28,10 @@ password = test_data2["password"]
 test_list = [username, email, password]
 
 
+# Osztály létrehozása, ami a Basic Page gyerekosztálya, benne a különböző,
+# conduit oldali bevitelimező, gomb, és szövegmező-beazonosítások vannak függvényekbe szervezve, ezek
+# meghívásakor a visszatérítési érték az aktuális mező lesz.
+# ------------------------------------------------------------------------------------------------------------------
 class Field_Identification(Basic_Page):
 
     def __init__(self, browser):
@@ -137,6 +146,13 @@ class Field_Identification(Basic_Page):
     def update_successful_modal_ok_Btn(self):
         return self.browser.find_element(By.XPATH, '//button[@class="swal-button swal-button--confirm"]')
 
+    def text_to_read(self):
+        return self.browser.find_element(By.XPATH, '//div[@class="col-xs-12"]/div/p')
+
+    # A sign-in függvény nem egy adott weboldal-elem beazonosítását végzi el, hanem egy komplett
+    # bejelentkezési folyamatot, amit több alkalommal hívok meg a "Test_Main_Conduit" osztályban.
+    # ------------------------------------------------------------------------------------------------------------------
+
     def sign_in(self):
         self.sign_in_Btn().click()
         time.sleep(1)
@@ -145,6 +161,3 @@ class Field_Identification(Basic_Page):
         time.sleep(1)
         self.sign_up_Btn_green().click()
         time.sleep(2)
-
-    def text_to_read(self):
-        return self.browser.find_element(By.XPATH, '//div[@class="col-xs-12"]/div/p')

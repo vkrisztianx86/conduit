@@ -1,6 +1,11 @@
 from selenium import webdriver
 from datetime import datetime
 
+
+# Osztály definiálása, amiben egy tetszőleges weboldal alapfunkciói vannak függvényekbe
+# szervezve. Ez a Test_Main_Conduit osztály ősosztálya.
+# ------------------------------------------------------------------------------------------------------------------
+
 class Basic_Page:
 
     def __init__(self, browser, url):
@@ -19,6 +24,6 @@ class Basic_Page:
 
     def save_screen(self, path):
         filename = f'{self.browser.title}-{datetime.now().strftime("%Y-%m-%d-%H-%M-%S")}.png'
-        print(f'Screenshot attempt: {path}\\{filename}') # path\filename.png --> C:\screenshots\filename.png
+        print(f'Screenshot attempt: {path}\\{filename}')  # path\filename.png --> C:\screenshots\filename.png
         if not self.browser.save_screenshot(f'{path}\\{filename}'):
             print('Screenshot failed.')

@@ -8,6 +8,10 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
 
+# A ChromeWebdriver indításához szükséges függvény, amely a Test_Main_Conduit osztályban
+# van meghívva, a setup_method-on belül.
+# ------------------------------------------------------------------------------------------------------------------
+
 def get_preconfigured_chrome_driver() -> webdriver.Chrome:
     s = Service(executable_path=ChromeDriverManager().install())
     o = Options()
@@ -16,5 +20,3 @@ def get_preconfigured_chrome_driver() -> webdriver.Chrome:
     o.add_argument('--no-sandbox')
     o.add_argument('--disable-dev-shm-usage')
     return webdriver.Chrome(service=s, options=o)
-
-
