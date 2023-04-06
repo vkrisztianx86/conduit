@@ -1,0 +1,2 @@
+There is no logout button, error is 'list' object has no attribute 'is_displayed'
+TC6 lefutott
