@@ -90,6 +90,9 @@ class Test_Main_Conduit:
     @allure.title('Bejelentkezés - sikeresen')
     def test_signin_succesfully(self):
         self.test_signup_succesfully_and_data_input_iteration()
+        time.sleep(1)
+        self.conduit.logout_Btn().click()
+        time.sleep(1)
         self.conduit.sign_in_Btn().click()
         time.sleep(1)
         self.conduit.email_input_signup().send_keys(test_list[1])
