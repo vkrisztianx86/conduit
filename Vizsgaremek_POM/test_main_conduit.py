@@ -71,7 +71,7 @@ class Test_Main_Conduit:
         reg_modal = self.conduit.registration_successful_modal()
         assert reg_modal.is_displayed()
         self.conduit.registration_successful_modal().click()
-        time.sleep(1)
+        time.sleep(2)
         print('TC3 lefutott')
 
     @allure.id('TC4')
