@@ -72,7 +72,9 @@ class Test_Main_Conduit:
         assert reg_modal.is_displayed()
         self.conduit.registration_successful_modal().click()
         time.sleep(2)
-        self.conduit.logout_Btn().click()
+        logout = self.conduit.logout_Btn2()[4]
+        logout.click()
+
         print('TC3 lefutott')
 
     @allure.id('TC4')
