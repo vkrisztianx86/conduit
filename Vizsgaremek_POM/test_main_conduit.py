@@ -103,6 +103,7 @@ class Test_Main_Conduit:
         for input in signup_inputs:
             input.send_keys(test_list[counter])
             counter += 1
+            time.sleep(3)
         self.conduit.sign_up_Btn_green().click()
         time.sleep(2)
         profile_name = self.conduit.profile_name()
