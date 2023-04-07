@@ -90,10 +90,24 @@ class Test_Main_Conduit:
     @allure.id('TC5')
     @allure.title('Bejelentkezés - sikeresen')
     def test_signin_succesfully(self):
-        self.conduit.sign_in()
+        self.conduit.sign_up_Btn().click()
         time.sleep(2)
+        self.conduit.username_input_signup().send_keys('UserName')
+        self.conduit.email_input_signup().send_keys('UserName@yahoo.hu')
+        self.conduit.password_input_signup().send_keys('passworD12')
+        self.conduit.sign_up_Btn_green().click()
+        time.sleep(3)
+        self.conduit.logout_Btn().click()
+        time.sleep(3)
+        self.conduit.sign_in_Btn().click()
+        time.sleep(1)
+        self.conduit.email_input_signup().send_keys('UserName@yahoo.hu')
+        self.conduit.password_input_signup().send_keys('passworD12')
+        time.sleep(1)
+        self.conduit.sign_up_Btn_green().click()
+        time.sleep(3)
         profile_name = self.conduit.profile_name()
-        assert profile_name.text == test_list[0]
+        assert profile_name.text == 'UserName'
         print('TC5 lefutott')
 
     @allure.id('TC6')
