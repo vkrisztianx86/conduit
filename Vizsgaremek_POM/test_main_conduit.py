@@ -90,62 +90,11 @@ class Test_Main_Conduit:
     @allure.id('TC5')
     @allure.title('Bejelentkezés - sikeresen')
     def test_signin_succesfully(self):
-        self.conduit.sign_up_Btn().click()
-        time.sleep(3)
-        signup_inputs = self.conduit.sign_up_inputs()
-        counter = 0
-        for input in signup_inputs:
-            input.send_keys(test_list[counter])
-            counter += 1
-        self.conduit.sign_up_Btn_green().click()
-        time.sleep(1)
-        reg_modal = self.conduit.registration_successful_modal()
-        assert reg_modal.is_displayed()
-        self.conduit.registration_successful_modal().click()
-        time.sleep(3)
-        self.conduit.logout_Btn().click()
-        time.sleep(3)
-        self.conduit.sign_in_Btn().click()
-        time.sleep(3)
-        self.conduit.email_input_signup().send_keys(test_list[1])
-        self.conduit.password_input_signup().send_keys(test_list[2])
-        time.sleep(3)
-        self.conduit.sign_up_Btn_green().click()
-        time.sleep(3)
+        self.conduit.sign_in()
+        time.sleep(2)
         profile_name = self.conduit.profile_name()
         assert profile_name.text == test_list[0]
         print('TC5 lefutott')
-        # self.conduit.sign_up_Btn().click()
-        # time.sleep(1)
-        # current_URL = self.conduit.current_URL()
-        # assert current_URL == 'http://localhost:1667/#/register'
-        # time.sleep(1)
-        # signup_inputs = self.conduit.sign_up_inputs()
-        # counter = 0
-        # for input in signup_inputs:
-        #     input.send_keys(test_list[counter])
-        #     counter += 1
-        # self.conduit.sign_up_Btn_green().click()
-        # time.sleep(1)
-        # self.conduit.registration_successful_modal().click()
-        # time.sleep(3)
-        # self.conduit.logout_Btn2().click()
-        # time.sleep(2)
-        # self.conduit.sign_in_Btn().click()
-        # time.sleep(6)
-        # self.conduit.email_input_signup().send_keys(test_list[1])
-        # self.conduit.password_input_signup().send_keys(test_list[2])
-        # # signup_inputs = self.conduit.sign_up_inputs()
-        # # counter = 1
-        # # for input in signup_inputs:
-        # #     input.send_keys(test_list[counter])
-        # #     counter += 1
-        # time.sleep(4)
-        # self.conduit.sign_up_Btn_green_1().click()
-        # time.sleep(4)
-        # profile_name = self.conduit.profile_name()
-        # assert profile_name.text == test_list[0]
-        # print('TC5 lefutott')
 
     @allure.id('TC6')
     @allure.title('Kijelentkezés')
