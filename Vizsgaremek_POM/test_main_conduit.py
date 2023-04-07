@@ -97,7 +97,7 @@ class Test_Main_Conduit:
         self.conduit.password_input_signup().send_keys('passworD12')
         self.conduit.sign_up_Btn_green().click()
         time.sleep(3)
-        logout_Btn = self.conduit.logout_Btn()
+        logout_Btn = self.conduit.logout_Btn_1()
         time.sleep(1)
         logout_Btn.click()
         time.sleep(3)
