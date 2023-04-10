@@ -110,7 +110,7 @@ class Test_Main_Conduit:
         print('TC6 lefutott')
 
     @allure.id('TC7')
-    @allure.title('új adatbevitel - kommentként')
+    @allure.title('Új adatbevitel - kommentként')
     def test_type_in_new_data_as_comment(self):
         self.conduit.sign_in()
         time.sleep(2)
@@ -131,7 +131,7 @@ class Test_Main_Conduit:
         print('TC7 lefutott')
 
     @allure.id('TC8')
-    @allure.title('új adatbevitel - karakterbevitel nélkül')
+    @allure.title('Új adatbevitel - karakterbevitel nélkül')
     def test_type_in_without_data(self):
         self.conduit.sign_in()
         time.sleep(2)
@@ -145,7 +145,7 @@ class Test_Main_Conduit:
         print('TC8 lefutott')
 
     @allure.id('TC9')
-    @allure.title('több oldalas lista bejárása')
+    @allure.title('Több oldalas lista bejárása')
     def test_iterating_thru_pages(self):
         self.conduit.sign_in()
         time.sleep(2)
@@ -157,7 +157,7 @@ class Test_Main_Conduit:
         print('TC9 lefutott')
 
     @allure.id('TC10')
-    @allure.title('meglévő adat módosítása')
+    @allure.title('Meglévő adat módosítása')
     def test_data_modification(self):
         self.conduit.sign_in()
         self.conduit.settings_Btn().click()
@@ -178,7 +178,7 @@ class Test_Main_Conduit:
         print(('TC10 lefutott'))
 
     @allure.id('TC11')
-    @allure.title('meglévő adat törlése')
+    @allure.title('Meglévő adat törlése')
     def test_delete_data(self):
         self.conduit.sign_in()
         article = self.conduit.article()
@@ -220,7 +220,7 @@ class Test_Main_Conduit:
 
     @allure.id('TC13')
     @allure.title('Adatok listázása')
-    def test_listing_data_frpm_conduit(self):
+    def test_listing_data_from_conduit(self):
         self.conduit.sign_in()
         time.sleep(2)
         article = self.conduit.article()
