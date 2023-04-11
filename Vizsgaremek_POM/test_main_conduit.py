@@ -107,13 +107,13 @@ class Test_Main_Conduit:
     def test_logout_succesfully_or_unsuccesfully(self):
         self.conduit.sign_in()
         time.sleep(2)
-        try:
-            logout_Btn = self.conduit.logout_Btn()
-            assert logout_Btn.is_displayed()
-            logout_Btn.click()
-        except BaseException as E:
-            print(f'There is no logout button, error is {E}')
-        print('TC6 lefutott')
+        logout_Btn = self.conduit.logout_Btn()
+        assert logout_Btn.is_displayed()
+        logout_Btn.click()
+        time.sleep(2)
+        signin = self.conduit.sign_in_Btn()
+        assert signin.is_displayed()
+
 
     @allure.id('TC7')
     @allure.title('Új adatbevitel - kommentként')
