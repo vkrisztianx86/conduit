@@ -2,7 +2,6 @@ from basic_page import Basic_Page
 import time
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
 
 # Tesztadatok dictionary-ba szervezése

@@ -1,19 +1,15 @@
 import csv
 import time
 import allure
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 import configuration as config
 from field_identification import Field_Identification
-from field_identification import test_list
-
 
 
 # Ez a main class, ebben vannak definiálva a különböző tesztesetek végrehajtásához a függvények. A
-# "Test_Main_conduit" osztály GitHub-ra pusholásával elindul a Conduit weboldal automatizált tesztelése,
-# minden egyes teszteset teljesen különálló, a docker indítja az alkalmazást, majd a futás végén bezárja,
-# így mindegyik tesztesetet nulláról kell felépíteni. !!!!
+# "Test_Main_conduit" osztály GitHub-ra pusholásával kezdődik a folyamat, a
+# Conduit weboldal automatizált tesztelése. A docker elindul, feltelepülnek a kód futtatásához szükséges programok, majd
+# minden egyes teszteset különálló egységként elkezd lefutni sorban, ezután megkezdődik a kiértékelés, és ennek a
+# végén a folyamat leáll.
 # ------------------------------------------------------------------------------------------------------------------
 class Test_Main_Conduit:
 
@@ -40,7 +36,6 @@ class Test_Main_Conduit:
         time.sleep(3)
         container_after_accepting_cookie = self.conduit.container().text
         assert container_before_accepting_cookie != container_after_accepting_cookie
-
 
     @allure.id('TC2')
     @allure.title('Regisztráció - üres mezőkkel')
@@ -110,10 +105,9 @@ class Test_Main_Conduit:
         logout_Btn = self.conduit.logout_Btn()
         assert logout_Btn.is_displayed()
         logout_Btn.click()
-        time.sleep(2)
+        time.sleep(3)
         signin = self.conduit.sign_in_Btn()
         assert signin.is_displayed()
-
 
     @allure.id('TC7')
     @allure.title('Új adatbevitel - kommentként')
