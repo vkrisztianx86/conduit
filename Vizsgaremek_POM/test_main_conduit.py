@@ -1,3 +1,4 @@
+import csv
 import time
 import allure
 from selenium.webdriver.common.by import By
@@ -8,10 +9,11 @@ from field_identification import Field_Identification
 from field_identification import test_list
 
 
+
 # Ez a main class, ebben vannak definiálva a különböző tesztesetek végrehajtásához a függvények. A
 # "Test_Main_conduit" osztály GitHub-ra pusholásával elindul a Conduit weboldal automatizált tesztelése,
 # minden egyes teszteset teljesen különálló, a docker indítja az alkalmazást, majd a futás végén bezárja,
-# így mindegyik tesztesetet nulláról kell felépíteni.
+# így mindegyik tesztesetet nulláról kell felépíteni. !!!!
 # ------------------------------------------------------------------------------------------------------------------
 class Test_Main_Conduit:
 
@@ -39,6 +41,7 @@ class Test_Main_Conduit:
             print(f'Cookie window is not showing up, error is {E}')
         print('TC1 lefutott')
 
+
     @allure.id('TC2')
     @allure.title('Regisztráció - üres mezőkkel')
     def test_signup_with_empty_fields(self):
@@ -61,18 +64,24 @@ class Test_Main_Conduit:
         current_URL = self.conduit.current_URL()
         assert current_URL == 'http://localhost:1667/#/register'
         time.sleep(1)
-        signup_inputs = self.conduit.sign_up_inputs()
-        counter = 0
-        for input in signup_inputs:
-            input.send_keys(test_list[counter])
-            counter += 1
-        self.conduit.sign_up_Btn_green().click()
-        time.sleep(1)
-        reg_modal = self.conduit.registration_successful_modal()
-        assert reg_modal.is_displayed()
-        self.conduit.registration_successful_modal().click()
-        time.sleep(4)
-        print('TC3 lefutott')
+        with open('data.csv', 'r') as reg_inputs:
+            reg_reader = csv.reader(reg_inputs, delimiter=',')
+            next(reg_reader)
+            for inputs in reg_reader:
+                self.conduit.username_input_signup().send_keys(inputs[1])
+                self.conduit.email_input_signup().send_keys(inputs[2])
+                self.conduit.password_input_signup().send_keys(inputs[3])
+                self.conduit.sign_up_Btn_green().click()
+                time.sleep(3)
+                reg_modal = self.conduit.registration_successful_modal()
+                assert reg_modal.is_displayed()
+                self.conduit.registration_successful_modal().click()
+                time.sleep(2)
+                self.conduit.home_Btn().click()
+                time.sleep(2)
+                self.conduit.logout_Btn().click()
+                time.sleep(2)
+                self.conduit.sign_up_Btn().click()
 
     @allure.id('TC4')
     @allure.title('Bejelentkezés - üres mezőkkel')
