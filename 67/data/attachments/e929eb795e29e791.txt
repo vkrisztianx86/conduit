@@ -1,0 +1,24 @@
+There is no logout button, error is Message: no such element: Unable to locate element: {"method":"xpath","selector":"//a[@active-class="active"]"}
+  (Session info: headless chrome=111.0.5563.146)
+Stacktrace:
+#0 0x559f5e04b243 <unknown>
+#1 0x559f5de0f7a6 <unknown>
+#2 0x559f5de4c64d <unknown>
+#3 0x559f5de4c761 <unknown>
+#4 0x559f5de87da4 <unknown>
+#5 0x559f5de6d0ad <unknown>
+#6 0x559f5de85932 <unknown>
+#7 0x559f5de6ce53 <unknown>
+#8 0x559f5de3f9ea <unknown>
+#9 0x559f5de40b2e <unknown>
+#10 0x559f5e09fd5e <unknown>
+#11 0x559f5e0a3a80 <unknown>
+#12 0x559f5e0858b0 <unknown>
+#13 0x559f5e0a4b63 <unknown>
+#14 0x559f5e076f75 <unknown>
+#15 0x559f5e0c7998 <unknown>
+#16 0x559f5e0c7b27 <unknown>
+#17 0x559f5e0e2c23 <unknown>
+#18 0x7fd1e71a7b43 <unknown>
+
+TC6 lefutott
