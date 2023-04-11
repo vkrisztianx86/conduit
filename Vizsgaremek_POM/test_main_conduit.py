@@ -3,6 +3,7 @@ import time
 import allure
 import configuration as config
 from field_identification import Field_Identification
+from field_identification import test_comment
 
 # Ez a main class, ebben vannak definiálva a különböző tesztesetek végrehajtásához a függvények. A
 # "Test_Main_conduit" osztály GitHub-ra pusholásával kezdődik a folyamat, a
@@ -112,6 +113,7 @@ class Test_Main_Conduit:
     @allure.title('Új adatbevitel - kommentként')
     def test_type_in_new_data_as_comment(self):
         self.conduit.sign_in()
+        data2 = test_comment
         time.sleep(2)
         article = self.conduit.article()
         article[-1].click()
@@ -120,13 +122,13 @@ class Test_Main_Conduit:
         time.sleep(2)
         self.conduit.comment_input().clear()
         time.sleep(1)
-        self.conduit.comment_input().send_keys('Bandita')
+        self.conduit.comment_input().send_keys(data2)
         time.sleep(2)
         self.conduit.post_comment().click()
         time.sleep(2)
         card_text = self.conduit.card_text()[-1]
         time.sleep(1)
-        assert card_text.text == 'Bandita'
+        assert card_text.text == data2
 
     @allure.id('TC8')
     @allure.title('Új adatbevitel - karakterbevitel nélkül')
@@ -180,22 +182,23 @@ class Test_Main_Conduit:
     @allure.title('Meglévő adat törlése')
     def test_delete_data(self):
         self.conduit.sign_in()
+        data1 = test_comment
         article = self.conduit.article()
         article[0].click()
         time.sleep(2)
         self.conduit.comment_input().click()
         time.sleep(2)
         self.conduit.comment_input().clear()
-        self.conduit.comment_input().send_keys('ThisisData')
+        self.conduit.comment_input().send_keys(data1)
         time.sleep(2)
         self.conduit.post_comment().click()
         time.sleep(2)
         card_text = self.conduit.card_text()[0]
-        assert card_text.text == 'ThisisData'
+        assert card_text.text == data1
         self.conduit.delete().click()
         time.sleep(1)
         card_text = self.conduit.card_text()[0]
-        assert card_text.text != 'ThisisData'
+        assert card_text.text != data1
 
     @allure.id('TC12')
     @allure.title('Adatok lementése felületről')

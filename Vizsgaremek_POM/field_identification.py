@@ -11,7 +11,8 @@ test_data2 = {
     "counter": "12",
     "username": "Tester11",
     "email": "Tester1@yahoo.hu",
-    "password": "passworD12"
+    "password": "passworD12",
+    "test_comment": "Bandita"
 }
 
 # Regisztrációs adatok összeállítása dictionary-ból és változókba mentése
@@ -19,6 +20,7 @@ test_data2 = {
 username = test_data2["username"] + test_data2["counter"]
 email = test_data2["email"] + test_data2["counter"]
 password = test_data2["password"]
+test_comment = test_data2["test_comment"]
 
 test_list = [username, email, password]
 
