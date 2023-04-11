@@ -4,7 +4,6 @@ import allure
 import configuration as config
 from field_identification import Field_Identification
 
-
 # Ez a main class, ebben vannak definiálva a különböző tesztesetek végrehajtásához a függvények. A
 # "Test_Main_conduit" osztály GitHub-ra pusholásával kezdődik a folyamat, a
 # Conduit weboldal automatizált tesztelése. A docker elindul, feltelepülnek a kód futtatásához szükséges programok, majd
@@ -148,10 +147,14 @@ class Test_Main_Conduit:
         self.conduit.sign_in()
         time.sleep(2)
         pages = self.conduit.pages()
+        counter = 1
         for page in pages:
             page.click()
             time.sleep(1)
             print(page.text, end=';')
+            counter += 1
+            if counter == len(pages):
+                assert counter == len(pages)
 
     @allure.id('TC10')
     @allure.title('Meglévő adat módosítása')
