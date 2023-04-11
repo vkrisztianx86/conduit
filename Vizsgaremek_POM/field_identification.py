@@ -7,11 +7,7 @@ from selenium.webdriver.common.by import By
 
 # Tesztadatok dictionary-ba szervezése
 # ------------------------------------------------------------------------------------------------------------------
-test_data1 = {
-    "username": "Krisztianx86",
-    "email": "vkrisztianx86@gmail.com",
-    "password": "passworD12"
-}
+
 test_data2 = {
     "counter": "12",
     "username": "Tester11",
