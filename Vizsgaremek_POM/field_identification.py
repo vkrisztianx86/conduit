@@ -151,6 +151,9 @@ class Field_Identification(Basic_Page):
     def text_to_read(self):
         return self.browser.find_element(By.XPATH, '//div[@class="col-xs-12"]/div/p')
 
+    def container(self):
+        return self.browser.find_element(By.XPATH, '//*[@id="app"]/footer/div')
+
     # A sign-in függvény nem egy adott weboldal-elem beazonosítását végzi el, hanem egy komplett
     # bejelentkezési folyamatot, amit több alkalommal hívok meg a "Test_Main_Conduit" osztályban.
     # ------------------------------------------------------------------------------------------------------------------

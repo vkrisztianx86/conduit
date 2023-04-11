@@ -33,13 +33,13 @@ class Test_Main_Conduit:
     def test_accept_cookie(self):
         cookie_bar_content = self.conduit.cookie_bar_content()
         cookie_Btn = self.conduit.cookie_Btn()
+        container_before_accepting_cookie = self.conduit.container().text
         time.sleep(2)
         assert cookie_bar_content.is_displayed()
-        try:
-            cookie_Btn.click()
-        except BaseException as E:
-            print(f'Cookie window is not showing up, error is {E}')
-        print('TC1 lefutott')
+        cookie_Btn.click()
+        time.sleep(3)
+        container_after_accepting_cookie = self.conduit.container().text
+        assert container_before_accepting_cookie != container_after_accepting_cookie
 
 
     @allure.id('TC2')
@@ -54,7 +54,6 @@ class Test_Main_Conduit:
         reg_failed = self.conduit.reg_failed()
         assert reg_failed.is_displayed()
         reg_failed.click()
-        print('TC2 lefutott')
 
     @allure.id('TC3')
     @allure.title('Regisztráció - sikeresen + sorozatos adatbevitel listából')
@@ -94,7 +93,6 @@ class Test_Main_Conduit:
         current_URL = self.conduit.current_URL()
         assert current_URL == 'http://localhost:1667/#/login'
         login_failed.click()
-        print('TC4 lefutott')
 
     @allure.id('TC5')
     @allure.title('Bejelentkezés - sikeresen')
@@ -103,7 +101,6 @@ class Test_Main_Conduit:
         time.sleep(2)
         profile_name = self.conduit.profile_name()
         assert profile_name.is_displayed()
-        print('TC5 lefutott')
 
     @allure.id('TC6')
     @allure.title('Kijelentkezés')
@@ -137,7 +134,6 @@ class Test_Main_Conduit:
         card_text = self.conduit.card_text()[-1]
         time.sleep(1)
         assert card_text.text == 'Bandita'
-        print('TC7 lefutott')
 
     @allure.id('TC8')
     @allure.title('Új adatbevitel - karakterbevitel nélkül')
@@ -151,7 +147,6 @@ class Test_Main_Conduit:
         self.conduit.post_comment().click()
         time.sleep(2)
         assert len(comment_input.text) == 0
-        print('TC8 lefutott')
 
     @allure.id('TC9')
     @allure.title('Több oldalas lista bejárása')
@@ -163,7 +158,6 @@ class Test_Main_Conduit:
             page.click()
             time.sleep(1)
             print(page.text, end=';')
-        print('TC9 lefutott')
 
     @allure.id('TC10')
     @allure.title('Meglévő adat módosítása')
@@ -184,7 +178,6 @@ class Test_Main_Conduit:
         time.sleep(2)
         current_username = self.conduit.username_input().get_attribute('value')
         assert current_username_mod == current_username
-        print(('TC10 lefutott'))
 
     @allure.id('TC11')
     @allure.title('Meglévő adat törlése')
@@ -206,7 +199,6 @@ class Test_Main_Conduit:
         time.sleep(1)
         card_text = self.conduit.card_text()[0]
         assert card_text.text != 'ThisisData'
-        print('TC11 lefutott')
 
     @allure.id('TC12')
     @allure.title('Adatok lementése felületről')
@@ -225,7 +217,6 @@ class Test_Main_Conduit:
             content = file_to_read.read()
             print(content)
             assert data == content
-        print('TC12 lefutott')
 
     @allure.id('TC13')
     @allure.title('Adatok listázása')
@@ -246,4 +237,3 @@ class Test_Main_Conduit:
             content1 = content.split()
             print(content1[1::3])
             assert content == data
-        print('TC13 lefutott')
