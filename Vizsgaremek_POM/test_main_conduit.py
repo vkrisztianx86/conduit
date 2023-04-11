@@ -220,7 +220,7 @@ class Test_Main_Conduit:
         current_URL = self.conduit.current_URL()
         assert current_URL == 'http://localhost:1667/#/register'
         time.sleep(1)
-        with open('data.csv', 'r') as reg_inputs:
+        with open('Datax.csv', 'r') as reg_inputs:
             reg_reader = csv.reader(reg_inputs, delimiter=',')
             next(reg_reader)
             for inputs in reg_reader:
