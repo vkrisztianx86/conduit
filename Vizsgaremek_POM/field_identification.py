@@ -158,9 +158,9 @@ class Field_Identification(Basic_Page):
 
     def sign_in(self):
         self.sign_in_Btn().click()
-        time.sleep(1)
+        time.sleep(2)
         self.email_input_signup().send_keys(test_list[1])
         self.password_input_signup().send_keys(test_list[2])
-        time.sleep(1)
+        time.sleep(2)
         self.sign_up_Btn_green().click()
         time.sleep(2)
