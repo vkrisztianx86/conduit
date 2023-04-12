@@ -70,7 +70,12 @@ class Test_Main_Conduit:
     @allure.id('TC4')
     @allure.title('Bejelentkezés - sikeresen')
     def test_signin_succesfully(self):
-        self.conduit.sign_in()
+        self.conduit.sign_in_Btn().click()
+        time.sleep(2)
+        self.conduit.email_input_signup().send_keys(test_list[1])
+        self.conduit.password_input_signup().send_keys(test_list[2])
+        time.sleep(2)
+        self.conduit.sign_up_Btn_green().click()
         time.sleep(2)
         profile_name = self.conduit.profile_name()[2]
         assert profile_name.is_displayed()
