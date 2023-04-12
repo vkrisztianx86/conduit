@@ -6,7 +6,8 @@ from selenium.webdriver.common.by import By
 
 # Tesztadatok dictionary-ba szervezése
 # ------------------------------------------------------------------------------------------------------------------
-
+# Regisztrációs adatok összeállítása dictionary-ból és változókba mentése
+# ------------------------------------------------------------------------------------------------------------------
 test_data2 = {
     "counter": "12",
     "username": "Tester11",
@@ -14,14 +15,10 @@ test_data2 = {
     "password": "passworD12",
     "test_comment": "Bandita"
 }
-
-# Regisztrációs adatok összeállítása dictionary-ból és változókba mentése
-# ------------------------------------------------------------------------------------------------------------------
 username = test_data2["username"]
 email = test_data2["email"]
 password = test_data2["password"]
 test_comment = test_data2["test_comment"]
-
 test_list = [username, email, password]
 
 
