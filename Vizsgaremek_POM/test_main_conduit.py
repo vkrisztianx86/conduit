@@ -4,7 +4,11 @@ import allure
 import configuration as config
 from field_identification import Field_Identification
 from field_identification import test_comment
-
+from field_identification import test_data2
+from field_identification import test_list
+from field_identification import password
+from field_identification import username
+from field_identification import email
 
 # Ez a main class, ebben vannak definiálva a különböző tesztesetek végrehajtásához a függvények. A
 # "Test_Main_conduit" osztály GitHub-ra pusholásával kezdődik a folyamat, a
