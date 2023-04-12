@@ -77,6 +77,7 @@ class Test_Main_Conduit:
         self.conduit.sign_in()
         time.sleep(2)
         logout_Btn = self.conduit.logout_Btn()
+        time.sleep(2)
         assert logout_Btn.is_displayed()
         logout_Btn.click()
         time.sleep(3)

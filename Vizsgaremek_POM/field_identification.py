@@ -65,12 +65,6 @@ class Field_Identification(Basic_Page):
     def logout_Btn(self):
         return self.browser.find_element(By.XPATH, '//a[@active-class="active"]')
 
-    def logout_Btn_1(self):
-        return self.browser.find_element(By.XPATH, '//*[@id="app"]/nav/div/ul/li[5]/a/i')
-
-    def logout_Btn2(self):
-        return self.browser.find_element(By.XPATH, '/html/body/div[1]/nav/div/ul/li[3]/a')
-
     def article(self):
         return self.browser.find_elements(By.XPATH, '//*[@id="app"]/div/div[2]/div/div[1]/div[2]/div/div/div[1]/a/h1')
 
