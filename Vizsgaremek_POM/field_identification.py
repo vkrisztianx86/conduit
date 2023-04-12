@@ -17,8 +17,8 @@ test_data2 = {
 
 # Regisztrációs adatok összeállítása dictionary-ból és változókba mentése
 # ------------------------------------------------------------------------------------------------------------------
-username = test_data2["username"] + test_data2["counter"]
-email = test_data2["email"] + test_data2["counter"]
+username = test_data2["username"]
+email = test_data2["email"]
 password = test_data2["password"]
 test_comment = test_data2["test_comment"]
 
