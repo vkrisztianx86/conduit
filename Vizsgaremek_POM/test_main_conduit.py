@@ -168,7 +168,7 @@ class Test_Main_Conduit:
 
     @allure.id('TC10')
     @allure.title('Meglévő adat törlése + módosítása')
-    def test_data_modification(self):
+    def test_data_deletion_and_modification(self):
         self.conduit.sign_in()
         self.conduit.settings_Btn().click()
         time.sleep(1)
