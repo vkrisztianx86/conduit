@@ -68,7 +68,7 @@ class Test_Main_Conduit:
     def test_signin_succesfully(self):
         self.conduit.sign_in()
         time.sleep(2)
-        profile_name = self.conduit.profile_name()
+        profile_name = self.conduit.profile_name()[2]
         assert profile_name.is_displayed()
 
     @allure.id('TC5')

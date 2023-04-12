@@ -102,7 +102,7 @@ class Field_Identification(Basic_Page):
         return self.browser.find_elements(By.XPATH, '//input[@class="form-control form-control-lg"]')
 
     def profile_name(self):
-        return self.browser.find_element(By.XPATH, '//*[@id="app"]/nav/div/ul/li[4]/a')
+        return self.browser.find_elements(By.XPATH, '//a[@class="nav-link"]')
 
     def pages(self):
         return self.browser.find_elements(By.CSS_SELECTOR, '.page-link')
