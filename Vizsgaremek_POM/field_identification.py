@@ -75,8 +75,7 @@ class Field_Identification(Basic_Page):
         return self.browser.find_elements(By.XPATH, '//p[@class="card-text"]')
 
     def delete(self):
-        return WebDriverWait(self.browser, 5).until(
-            EC.element_to_be_clickable((By.XPATH, '//i[@class="ion-trash-a"]')))
+        return self.browser.find_element(By.XPATH, '//i[@class="ion-trash-a"]')
 
     def cookie_Btn(self):
         return self.browser.find_element(By.XPATH,
