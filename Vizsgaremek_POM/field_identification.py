@@ -75,8 +75,7 @@ class Field_Identification(Basic_Page):
         return self.browser.find_elements(By.XPATH, '//*[@id="app"]/div/div[2]/div/div[1]/div[2]/div/div/div[1]/a/h1')
 
     def comment_input(self):
-        return WebDriverWait(self.browser, 5).until(
-            EC.element_to_be_clickable((By.XPATH, '//textarea[@placeholder="Write a comment..."]')))
+        return self.browser.find_element(By.XPATH, '//textarea[@placeholder="Write a comment..."]')
 
     def post_comment(self):
         return self.browser.find_element(By.XPATH, '//button[@class="btn btn-sm btn-primary"]')
