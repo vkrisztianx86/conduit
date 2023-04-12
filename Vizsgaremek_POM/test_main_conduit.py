@@ -184,10 +184,10 @@ class Test_Main_Conduit:
         time.sleep(2)
         data = self.conduit.text_to_read().text
         time.sleep(1)
-        with open('Data.txt', 'w', encoding='UTF-8') as file_to_write:
+        with open('Vizsgaremek_POM/Data.txt', 'w', encoding='UTF-8') as file_to_write:
             file_to_write.write(str(data))
         time.sleep(2)
-        with open('Data.txt', 'r', encoding='UTF-8') as file_to_read:
+        with open('Vizsgaremek_POM/Data.txt', 'r', encoding='UTF-8') as file_to_read:
             content = file_to_read.read()
             print(content)
             assert data == content
@@ -202,10 +202,10 @@ class Test_Main_Conduit:
         time.sleep(2)
         data = self.conduit.text_to_read().text
         time.sleep(1)
-        with open('Data.txt', 'w', encoding='UTF-8') as file_to_write:
+        with open('Vizsgaremek_POM/Data.txt', 'w', encoding='UTF-8') as file_to_write:
             file_to_write.write(str(data))
         time.sleep(2)
-        with open('Data.txt', 'r', encoding='UTF-8') as file_to_read:
+        with open('Vizsgaremek_POM/Data.txt', 'r', encoding='UTF-8') as file_to_read:
             content = file_to_read.read()
             print(content)
             content1 = content.split()
