@@ -178,8 +178,8 @@ class Test_Main_Conduit:
         current_username = self.conduit.username_input().get_attribute('value')
         current_username_mod = current_username[0:-1]
         self.conduit.username_input().clear()
-        self.conduit.username_input().send_keys(current_username_mod + 'mod')
-        current_username_mod = current_username_mod + 'mod'
+        self.conduit.username_input().send_keys(current_username_mod + test_comment)
+        current_username_mod = current_username_mod + test_comment
         self.conduit.update_Btn().click()
         time.sleep(2)
         assert self.conduit.update_successful_modal().is_displayed()
@@ -204,13 +204,13 @@ class Test_Main_Conduit:
         time.sleep(2)
         self.conduit.post_comment().click()
         time.sleep(2)
-        card_text = self.conduit.card_text()[-1]
+        card_text = self.conduit.card_text()[0]
         assert card_text.text == data1
-        time.sleep(2)
-        self.conduit.delete1().click()
+        time.sleep(4)
+        self.conduit.delete().click()
         time.sleep(3)
-        card_text = self.conduit.card_text()[-1]
-        assert card_text.text != data1
+        card_text1 = self.conduit.card_text()[0]
+        assert card_text1.get_attribute('value') != data1
 
     @allure.id('TC12')
     @allure.title('Adatok lementése felületről')
