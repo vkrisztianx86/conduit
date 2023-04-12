@@ -195,7 +195,7 @@ class Test_Main_Conduit:
         self.conduit.sign_in()
         data1 = test_comment
         article = self.conduit.article()
-        article[0].click()
+        article[-1].click()
         time.sleep(2)
         self.conduit.comment_input().click()
         time.sleep(2)
@@ -204,12 +204,12 @@ class Test_Main_Conduit:
         time.sleep(2)
         self.conduit.post_comment().click()
         time.sleep(2)
-        card_text = self.conduit.card_text()[0]
+        card_text = self.conduit.card_text()[-1]
         assert card_text.text == data1
         time.sleep(2)
         self.conduit.delete().click()
         time.sleep(3)
-        card_text = self.conduit.card_text()[0]
+        card_text = self.conduit.card_text()[-1]
         assert card_text.text != data1
 
     @allure.id('TC12')
