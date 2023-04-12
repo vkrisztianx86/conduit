@@ -207,7 +207,7 @@ class Test_Main_Conduit:
         card_text = self.conduit.card_text()[-1]
         assert card_text.text == data1
         time.sleep(2)
-        self.conduit.delete().click()
+        self.conduit.delete1().click()
         time.sleep(3)
         card_text = self.conduit.card_text()[-1]
         assert card_text.text != data1

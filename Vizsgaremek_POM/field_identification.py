@@ -77,6 +77,9 @@ class Field_Identification(Basic_Page):
     def delete(self):
         return self.browser.find_element(By.XPATH, '//i[@class="ion-trash-a"]')
 
+    def delete1(self):
+        return self.browser.find_element(By.XPATH, '//span[@class="mod-options"]')
+
     def cookie_Btn(self):
         return self.browser.find_element(By.XPATH,
                                          '//button[@class="cookie__bar__buttons__button cookie__bar__buttons__button--accept"]')
