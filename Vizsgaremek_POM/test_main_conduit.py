@@ -195,7 +195,7 @@ class Test_Main_Conduit:
         self.conduit.sign_in()
         data1 = test_comment
         article = self.conduit.article()
-        article[-1].click()
+        article[0].click()
         time.sleep(2)
         self.conduit.comment_input().click()
         time.sleep(2)
