@@ -120,29 +120,6 @@ class Test_Main_Conduit:
         signin = self.conduit.sign_in_Btn()
         assert signin.is_displayed()
 
-    @allure.id('TC11')
-    @allure.title('Meglévő adat törlése')
-    def test_delete_data(self):
-        self.conduit.sign_in()
-        data1 = test_comment
-        article = self.conduit.article()
-        article[0].click()
-        time.sleep(2)
-        self.conduit.comment_input().click()
-        time.sleep(2)
-        self.conduit.comment_input().clear()
-        self.conduit.comment_input().send_keys(data1)
-        time.sleep(2)
-        self.conduit.post_comment().click()
-        time.sleep(2)
-        card_text = self.conduit.card_text()[0]
-        assert card_text.text == data1
-        time.sleep(4)
-        self.conduit.delete1().click()
-        time.sleep(3)
-        card_text1 = self.conduit.card_text()[0]
-        assert card_text1.get_attribute('value') != data1
-
     @allure.id('TC7')
     @allure.title('Új adatbevitel - kommentként')
     def test_type_in_new_data_as_comment(self):
@@ -193,7 +170,7 @@ class Test_Main_Conduit:
                 assert counter == len(pages)
 
     @allure.id('TC10')
-    @allure.title('Meglévő adat módosítása')
+    @allure.title('Meglévő adat törlése + módosítása')
     def test_data_modification(self):
         self.conduit.sign_in()
         self.conduit.settings_Btn().click()
@@ -201,6 +178,8 @@ class Test_Main_Conduit:
         current_username = self.conduit.username_input().get_attribute('value')
         current_username_mod = current_username[0:-1]
         self.conduit.username_input().clear()
+        time.sleep(1)
+        assert self.conduit.username_input().text == ''
         self.conduit.username_input().send_keys(current_username_mod + test_comment)
         current_username_mod = current_username_mod + test_comment
         self.conduit.update_Btn().click()
@@ -212,30 +191,7 @@ class Test_Main_Conduit:
         current_username = self.conduit.username_input().get_attribute('value')
         assert current_username_mod == current_username
 
-    # @allure.id('TC11')
-    # @allure.title('Meglévő adat törlése')
-    # def test_delete_data(self):
-    #     self.conduit.sign_in()
-    #     data1 = test_comment
-    #     article = self.conduit.article()
-    #     article[0].click()
-    #     time.sleep(2)
-    #     self.conduit.comment_input().click()
-    #     time.sleep(2)
-    #     self.conduit.comment_input().clear()
-    #     self.conduit.comment_input().send_keys(data1)
-    #     time.sleep(2)
-    #     self.conduit.post_comment().click()
-    #     time.sleep(2)
-    #     card_text = self.conduit.card_text()[0]
-    #     assert card_text.text == data1
-    #     time.sleep(4)
-    #     self.conduit.delete1().click()
-    #     time.sleep(3)
-    #     card_text1 = self.conduit.card_text()[0]
-    #     assert card_text1.get_attribute('value') != data1
-
-    @allure.id('TC12')
+    @allure.id('TC11')
     @allure.title('Adatok lementése felületről')
     def test_read_from_conduit(self):
         self.conduit.sign_in()
@@ -253,7 +209,7 @@ class Test_Main_Conduit:
             print(content)
             assert data == content
 
-    @allure.id('TC13')
+    @allure.id('TC12')
     @allure.title('Adatok listázása')
     def test_listing_data_from_conduit(self):
         self.conduit.sign_in()
