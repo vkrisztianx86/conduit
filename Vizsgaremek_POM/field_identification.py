@@ -10,8 +10,8 @@ from selenium.webdriver.common.by import By
 # ------------------------------------------------------------------------------------------------------------------
 test_data2 = {
     "counter": "12",
-    "username": "Tester11",
-    "email": "Tester1@yahoo.hu",
+    "username": "testerT102",
+    "email": "Testerx2@yahoo.com",
     "password": "passworD12",
     "test_comment": "Bandita"
 }
