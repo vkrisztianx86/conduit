@@ -144,8 +144,13 @@ class Field_Identification(Basic_Page):
     def container(self):
         return self.browser.find_element(By.XPATH, '//*[@id="app"]/footer/div')
 
+    def testarea(self):
+        return self.browser.find_element(By.XPATH, '//textarea[@placeholder="Short bio about you"]')
+
     # A sign-in függvény nem egy adott weboldal-elem beazonosítását végzi el, hanem egy komplett
     # bejelentkezési folyamatot, amit több alkalommal hívok meg a "Test_Main_Conduit" osztályban.
+    # ------------------------------------------------------------------------------------------------------------------
+    # A delete_bio függvény a TC10-ben kerül meghívásra, ahol az adattörlés funkciót valósítja meg.
     # ------------------------------------------------------------------------------------------------------------------
 
     def sign_in(self):
@@ -155,4 +160,27 @@ class Field_Identification(Basic_Page):
         self.password_input_signup().send_keys(test_list[2])
         time.sleep(2)
         self.sign_up_Btn_green().click()
+        time.sleep(2)
+
+    def delete_bio(self):
+        self.testarea().clear()
+        time.sleep(2)
+        deletable_data2 = self.testarea().get_attribute('value')
+        time.sleep(2)
+        self.testarea().send_keys(test_comment)
+        self.update_Btn().click()
+        time.sleep(1)
+        self.update_successful_modal_ok_Btn().click()
+        time.sleep(1)
+        deletable_data = self.testarea().get_attribute('value')
+        assert deletable_data == test_comment
+        time.sleep(1)
+        self.testarea().clear()
+        self.testarea().send_keys('')
+        time.sleep(3)
+        self.update_Btn().click()
+        time.sleep(3)
+        self.update_successful_modal_ok_Btn().click()
+        time.sleep(2)
+        assert deletable_data2 == ''
         time.sleep(2)

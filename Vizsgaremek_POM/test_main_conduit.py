@@ -174,6 +174,7 @@ class Test_Main_Conduit:
         time.sleep(1)
         current_username = self.conduit.username_input().get_attribute('value')
         current_username_mod = current_username[0:-1]
+        self.conduit.delete_bio()
         self.conduit.username_input().clear()
         time.sleep(1)
         assert self.conduit.username_input().text == ''
