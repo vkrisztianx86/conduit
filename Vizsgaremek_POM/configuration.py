@@ -7,7 +7,6 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
-
 # A ChromeWebdriver indításához szükséges függvény, amely a Test_Main_Conduit osztályban
 # van meghívva, a setup_method-on belül.
 # ------------------------------------------------------------------------------------------------------------------
