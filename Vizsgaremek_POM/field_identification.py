@@ -63,7 +63,7 @@ class Field_Identification(Basic_Page):
         return self.browser.find_element(By.XPATH, '//a[@active-class="active"]')
 
     def article(self):
-        return self.browser.find_elements(By.XPATH, '//*[@id="app"]/div/div[2]/div/div[1]/div[2]/div/div/div[1]/a/h1')
+        return self.browser.find_elements(By.XPATH, '//div[@class="article-preview"]')
 
     def comment_input(self):
         return self.browser.find_element(By.XPATH, '//textarea[@placeholder="Write a comment..."]')
