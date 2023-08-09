@@ -3,9 +3,11 @@ A modul célja, hogy ne kelljen minden egyes példánál ismételni a megfelelő
 Importálás után elég a get_preconfigured_chrome_driver() függvényt meghívni.
 """
 from selenium import webdriver
+
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
+
 
 # A ChromeWebdriver indításához szükséges függvény, amely a Test_Main_Conduit osztályban
 # van meghívva, a setup_method-on belül.
